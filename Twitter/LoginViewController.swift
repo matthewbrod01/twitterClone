@@ -29,6 +29,13 @@ class LoginViewController: UIViewController {
         loginIcon.addGestureRecognizer(didTapIcon)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // If login data persists, show Home Screen immediately
+        if UserDefaults.standard.bool(forKey: "userLoggedIn") == true {
+            self.performSegue(withIdentifier: "loginToHome", sender: self)
+        }
+    }
+    
     
     @IBAction func onTapLogin(_ sender: Any) {
         loginToHomePage()
@@ -46,7 +53,8 @@ class LoginViewController: UIViewController {
         
         let urlString = "https://api.twitter.com/oauth/request_token"
         TwitterAPICaller.client?.login(url: urlString, success: {
-            // On success: Login to home page
+            // On success: Persist data + Login to home page
+            UserDefaults.standard.set(true, forKey: "userLoggedIn")
             self.performSegue(withIdentifier: "loginToHome", sender: self)
         }, failure: { (Error) in
             // On failure: Present an error alert
