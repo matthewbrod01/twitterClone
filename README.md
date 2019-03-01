@@ -23,7 +23,7 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src="" width=250 title='Video Walkthrough' alt='Video Walkthrough' /><br />
+<img src="leetTweets.gif" width=250 title='Video Walkthrough' alt='Video Walkthrough' /><br />
 
 ### License
 
