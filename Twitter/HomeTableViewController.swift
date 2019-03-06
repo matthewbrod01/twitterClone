@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class HomeTableViewController: UITableViewController {
     
@@ -21,11 +22,16 @@ class HomeTableViewController: UITableViewController {
         // Target: This screen
         // Action: Call function fetchTweets()
         // for: .valueChanged (occurs when we perform touch dragging)
-        myRefreshControl.addTarget(self, action: #selector(fetchTweets), for: .valueChanged)
+        myRefreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
     }
     
-    @objc func fetchTweets() {
+    @objc func didPullToRefresh() {
+        self.showHUD(progressLabel: "Loading Tweets")
+        fetchTweets()
+    }
+    
+    func fetchTweets() {
         let urlString = "https://api.twitter.com/1.1/statuses/home_timeline.json"
         let myParams = ["count": 20]
 
@@ -36,7 +42,17 @@ class HomeTableViewController: UITableViewController {
                 self.tweetArray.append(tweet)
             }
             self.tableView.reloadData()
+            /*
             self.myRefreshControl.endRefreshing()
+            DispatchQueue.main.async {
+                self.dismissHUD(isAnimated: true)
+            }
+            */
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
+                self.myRefreshControl.endRefreshing()
+                self.dismissHUD(isAnimated: true)
+            })
+            
         }, failure: { (Error) in
             // On failure: Present an error alert
             let title = "Error"
@@ -79,5 +95,16 @@ class HomeTableViewController: UITableViewController {
         }
         
         return cell
+    }
+}
+
+extension UIViewController {
+    func showHUD(progressLabel: String) {
+        let progressHUD = MBProgressHUD.showAdded(to: self.view, animated: true)
+        progressHUD.label.text = progressLabel
+    }
+    
+    func dismissHUD(isAnimated: Bool) {
+        MBProgressHUD.hide(for: self.view, animated: isAnimated)
     }
 }
