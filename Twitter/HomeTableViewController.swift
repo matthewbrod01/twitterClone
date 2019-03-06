@@ -12,7 +12,7 @@ import MBProgressHUD
 class HomeTableViewController: UITableViewController {
     
     var tweetArray = [NSDictionary]()
-    var numberOfTweets: Int!
+    var numberOfTweets: Int = 0
     let myRefreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -26,14 +26,17 @@ class HomeTableViewController: UITableViewController {
         tableView.refreshControl = myRefreshControl
     }
     
+    /* Pull to refresh event handler */
     @objc func didPullToRefresh() {
-        self.showHUD(progressLabel: "Loading Tweets")
+        self.showHUD(progressLabel: "Refreshing Tweets")
         fetchTweets()
     }
     
+    /* Initial setup of home page */
     func fetchTweets() {
+        numberOfTweets = 10 // When we pull to refresh, reset tweets to 10
         let urlString = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-        let myParams = ["count": 20]
+        let myParams = ["count": numberOfTweets]
 
         TwitterAPICaller.client?.getDictionariesRequest(url: urlString, parameters: myParams, success: { (tweets: [NSDictionary]) in
             
@@ -62,23 +65,55 @@ class HomeTableViewController: UITableViewController {
             self.present(alert, animated: true, completion: nil)
         })
     }
+    /* For infinite scroll */
+    func fetchMoreTweets() {
+        numberOfTweets += 10
+        let urlString = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        let myParams = ["count": numberOfTweets]
+        
+        TwitterAPICaller.client?.getDictionariesRequest(url: urlString, parameters: myParams, success: { (tweets: [NSDictionary]) in
+            
+            self.tweetArray.removeAll()
+            for tweet in tweets {
+                self.tweetArray.append(tweet)
+            }
+            self.tableView.reloadData()
     
+        }, failure: { (Error) in
+            // On failure: Present an error alert
+            let title = "Error"
+            let message = "An error has occured. Could not retrieve tweets."
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        })
+    }
+    
+    /* Log out event handler */
     @IBAction func onTapLogout(_ sender: Any) {
         TwitterAPICaller.client?.logout()
         UserDefaults.standard.set(false, forKey: "userLoggedIn")
         self.dismiss(animated: true, completion: nil)
     }
     
-    // MARK: - Table view data source
-
+    /* Infinite scroll. When user is at bottom of tableView page, fetch more tweets */
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == tweetArray.count {
+            fetchMoreTweets()
+        }
+    }
+    
+    /* number of sections in tableView */
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
+    /* numbers of rows in sections */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweetArray.count
     }
     
+    /* cell for each row */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCell
         
