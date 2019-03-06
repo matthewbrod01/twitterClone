@@ -1,8 +1,36 @@
-# Project 3 - *LeetTweets*
+# Project 3 - *LeetTweets Twitter Clone*
 
 **LeetTweets** is an iOS twitter client to read your tweets.
 
+Time spent: **3** hours spent in total
+
+## Twitter - Part II
+
+This is a basic twitter clone app to view, compose, favorite, and retweet tweets.
+
 Time spent: **X** hours spent in total
+
+### User Stories
+
+The following **required** functionality is completed:
+
+- [ ] User can compose a tweet. (4pts)
+- [ ] User can favorite a tweet. (4pts)
+- [ ] User can retweet a tweet. (2pts)
+
+The following **bonus** features are implemented:
+
+- [ ] When composing a tweet, user sees a countdown for the number of characters remaining for the tweet (out of 140) (2pts)
+- [ ] User can view their profile in a profile tab. (3pts)
+- [ ] User sees embedded images in tweet if available. (3pts)
+
+### App Walkthough GIF
+
+Here's a walkthrough of implemented user stories:
+
+<img src="leetTweets.gif" width=250 title='Video Walkthrough' alt='Video Walkthrough' /><br />
+
+## Twitter - Part 1
 
 ### User Stories
 
@@ -16,8 +44,8 @@ The following **required** functionality is completed:
 
 The following **bonus** features are implemented:
 
-- [ ] User can pull to refresh. (1pt)
-- [ ] User can load past tweets infinitely. (2pts)
+- [x] User can pull to refresh. (1pt)
+- [x] User can load past tweets infinitely. (2pts)
 
 ### App Walkthough GIF
 

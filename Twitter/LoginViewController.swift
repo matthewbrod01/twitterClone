@@ -56,7 +56,8 @@ class LoginViewController: UIViewController {
             // On success: Persist data + Login to home page
             UserDefaults.standard.set(true, forKey: "userLoggedIn")
             self.performSegue(withIdentifier: "loginToHome", sender: self)
-        }, failure: { (Error) in
+        }, failure: { (error) in
+            print(error.localizedDescription)
             // On failure: Present an error alert
             let title = "Error"
             let message = "An error has occured. Unable to log-in."

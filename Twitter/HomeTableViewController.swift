@@ -56,7 +56,8 @@ class HomeTableViewController: UITableViewController {
                 self.dismissHUD(isAnimated: true)
             })
             
-        }, failure: { (Error) in
+        }, failure: { (error) in
+            print(error.localizedDescription)
             // On failure: Present an error alert
             let title = "Error"
             let message = "An error has occured. Could not retrieve tweets."
