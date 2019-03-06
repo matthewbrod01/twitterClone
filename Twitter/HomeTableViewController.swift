@@ -12,15 +12,22 @@ class HomeTableViewController: UITableViewController {
     
     var tweetArray = [NSDictionary]()
     var numberOfTweets: Int!
+    let myRefreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchTweets()
+        
+        // Target: This screen
+        // Action: Call function fetchTweets()
+        // for: .valueChanged (occurs when we perform touch dragging)
+        myRefreshControl.addTarget(self, action: #selector(fetchTweets), for: .valueChanged)
+        tableView.refreshControl = myRefreshControl
     }
     
-    func fetchTweets() {
+    @objc func fetchTweets() {
         let urlString = "https://api.twitter.com/1.1/statuses/home_timeline.json"
-        let myParams = ["count": 10]
+        let myParams = ["count": 20]
 
         TwitterAPICaller.client?.getDictionariesRequest(url: urlString, parameters: myParams, success: { (tweets: [NSDictionary]) in
             
@@ -29,6 +36,7 @@ class HomeTableViewController: UITableViewController {
                 self.tweetArray.append(tweet)
             }
             self.tableView.reloadData()
+            self.myRefreshControl.endRefreshing()
         }, failure: { (Error) in
             // On failure: Present an error alert
             let title = "Error"
