@@ -24,8 +24,17 @@ class HomeTableViewController: UITableViewController {
         // for: .valueChanged (occurs when we perform touch dragging)
         myRefreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         tableView.refreshControl = myRefreshControl
+        
+        // Dynamic cell height resizing
+        tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.estimatedRowHeight = 150
     }
     
+    /* Always called when view appears. viewDidLoad is only called once*/
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.fetchTweets()
+    }
     /* Pull to refresh event handler */
     @objc func didPullToRefresh() {
         self.showHUD(progressLabel: "Refreshing Tweets")
@@ -130,7 +139,15 @@ class HomeTableViewController: UITableViewController {
             cell.profileImageView.image = UIImage(data: imageData)
         }
         
+        cell.setFavorite(tweetArray[indexPath.row]["favorited"] as! Bool)
+        cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
+        
         return cell
+    }
+    
+    /* Remove cell gray selection highlight effect on tap release */
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
