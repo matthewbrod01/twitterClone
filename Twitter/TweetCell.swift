@@ -42,6 +42,19 @@ class TweetCell: UITableViewCell {
     
     @IBAction func onTapFavorite(_ sender: Any) {
         let toBeFavorited = !favorited
+        if (toBeFavorited) {
+            TwitterAPICaller.client?.favoriteTweet(tweetId: tweetId, success: {
+                self.setFavorite(true)
+            }, failure: { (error) in
+                print("Favorite did not succeed: \(error)")
+            })
+        } else {
+            TwitterAPICaller.client?.unfavoriteTweet(tweetId: tweetId, success: {
+                self.setFavorite(false)
+            }, failure: { (error) in
+                print("Unfavorite did not succeed: \(error)")
+            })
+        }
     }
     
     @IBAction func onTapRetweet(_ sender: Any) {
