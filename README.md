@@ -51,7 +51,9 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src="leetTweets.gif" width=250 title='Video Walkthrough' alt='Video Walkthrough' /><br />
+<img src="leetTweets.gif" width=250 title='Video Walkthrough' alt='Video Walkthrough' />
+<label>&nsbp;</label>
+<img src="leetTweets2.gif" width=250 title='Video Walkthrough' alt='Video Walkthrough' /><br />
 
 ### License
 
