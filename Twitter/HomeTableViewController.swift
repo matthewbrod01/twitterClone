@@ -131,6 +131,13 @@ class HomeTableViewController: UITableViewController {
         cell.usernameLabel.text = user["name"] as? String
         cell.tweetLabel.text = tweetArray[indexPath.row]["text"] as? String
         
+        let userHandle = user["screen_name"] as? String
+        cell.userHandleLabel.text = "@\(userHandle!)"
+
+        let timestampOriginal = tweetArray[indexPath.row]["created_at"] as? String
+        let timestampString = parseTimestampString(timestamp: timestampOriginal!)
+        cell.timestampLabel.text = "•\(timestampString)"
+        
         // Set image in Xcode without 3rd party library
         let urlString = user["profile_image_url_https"] as? String
         let imageUrl = URL(string: urlString!)
@@ -143,6 +150,23 @@ class HomeTableViewController: UITableViewController {
         cell.tweetId = tweetArray[indexPath.row]["id"] as! Int
         
         return cell
+    }
+    
+    func parseTimestampString(timestamp: String) -> String {
+        let formatter = DateFormatter()
+        
+        // Configure the input format to parse the date string
+        formatter.dateFormat = "E MMM d HH:mm:ss Z y"
+        
+        // Convert String to Date
+        let date = formatter.date(from: timestamp)
+        
+        // Configure output format
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        
+        // Convert Date to String
+        return formatter.string(from: date!)
     }
     
     /* Remove cell gray selection highlight effect on tap release */
