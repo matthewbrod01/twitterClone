@@ -14,12 +14,11 @@ class ContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("in containerVC")
         
+        // Make button rounded
         sideMenuButton.setBackgroundImage(UIImage(named: "profile-pic.png"), for: .normal)
         sideMenuButton.layer.borderWidth = 1
         sideMenuButton.layer.borderColor = UIColor.lightGray.cgColor
-        //sideMenuButton.layer.backgroundColor = UIColor.blue.cgColor
         sideMenuButton.layer.masksToBounds = false
         sideMenuButton.layer.cornerRadius = sideMenuButton.frame.height / 2
         sideMenuButton.clipsToBounds = true

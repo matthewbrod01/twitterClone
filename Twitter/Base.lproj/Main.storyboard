@@ -13,7 +13,7 @@
         <!--Login View Controller-->
         <scene sceneID="s79-Jr-3MS">
             <objects>
-                <viewController id="drV-0d-2Ka" customClass="LoginViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" id="drV-0d-2Ka" customClass="LoginViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CLA-8s-lP5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -212,13 +212,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="cRf-x2-uld">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" image="close-icon" id="z4N-1V-Eml">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" red="0.2251579165" green="0.63001710180000003" blue="0.95047801730000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="onTapCancel:" destination="yrU-NH-Zxn" id="Z5n-3X-YR6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Tweet" id="0iJ-Hq-lVt">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" red="0.2251579165" green="0.63001710180000003" blue="0.95047801730000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="onTapTweet:" destination="yrU-NH-Zxn" id="4iQ-YA-Ewl"/>
                             </connections>
@@ -232,10 +232,10 @@
             </objects>
             <point key="canvasLocation" x="1853.6231884057972" y="790.76086956521749"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu View Controller-->
         <scene sceneID="hCz-rY-CEe">
             <objects>
-                <viewController id="zYX-5h-IJc" sceneMemberID="viewController">
+                <viewController id="zYX-5h-IJc" customClass="MenuViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osr-PG-cfr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,17 +245,72 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPG-ZL-sLV">
+                                <rect key="frame" x="89" y="327" width="52" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Profile">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="SYD-xn-1CU">
+                                <rect key="frame" x="86" y="106" width="128" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="i9N-lR-d89"/>
+                                    <constraint firstAttribute="height" constant="128" id="xnC-WH-6h3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" fixedFrame="YES" text="Swift Bro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOL-U6-TuS">
+                                <rect key="frame" x="111" y="242" width="83" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" fixedFrame="YES" text="@swift_bro" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Awj-RO-kng">
+                                <rect key="frame" x="114" y="271" width="72" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sign-out-icon-96" translatesAutoresizingMaskIntoConstraints="NO" id="f3W-Zo-APY">
+                                <rect key="frame" x="47" y="369" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile-better-icon-100" translatesAutoresizingMaskIntoConstraints="NO" id="5Hu-Pz-x3d">
+                                <rect key="frame" x="47" y="327" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjz-WC-gDS">
+                                <rect key="frame" x="89" y="369" width="70" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Sign Out">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTapSignOut:" destination="zYX-5h-IJc" eventType="touchUpInside" id="T9N-vb-L1L"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SYD-xn-1CU" firstAttribute="top" secondItem="otZ-wj-wsA" secondAttribute="top" constant="86" id="INo-BW-Yf7"/>
+                            <constraint firstItem="SYD-xn-1CU" firstAttribute="leading" secondItem="otZ-wj-wsA" secondAttribute="leading" constant="86" id="z1O-aD-wuh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="otZ-wj-wsA"/>
                     </view>
                     <navigationItem key="navigationItem" id="Oko-Mz-e35"/>
+                    <connections>
+                        <outlet property="profileImageView" destination="SYD-xn-1CU" id="8WF-yY-Quc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iCF-OV-MtM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="-682"/>
+            <point key="canvasLocation" x="1853.6231884057972" y="-682.33695652173924"/>
         </scene>
-        <!--Container View Controller-->
+        <!--Home-->
         <scene sceneID="AMA-2j-3F6">
             <objects>
                 <viewController id="ZjT-43-r8P" customClass="ContainerViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
@@ -289,7 +344,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aVh-Rx-ALz"/>
                     </view>
-                    <navigationItem key="navigationItem" id="API-X5-6Ff">
+                    <navigationItem key="navigationItem" title="Home" id="API-X5-6Ff">
                         <barButtonItem key="rightBarButtonItem" title="tweetButton" image="edit-icon" style="done" id="09B-Yu-B1R">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -334,7 +389,6 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dcT-Ac-AQr">
                         <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.224501431" green="0.62109833960000005" blue="0.95828241110000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -377,6 +431,9 @@
         <image name="close-icon" width="26" height="24"/>
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
+        <image name="profile-better-icon-100" width="75" height="75"/>
+        <image name="profile-pic" width="400" height="400"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <image name="sign-out-icon-96" width="72" height="72"/>
     </resources>
 </document>

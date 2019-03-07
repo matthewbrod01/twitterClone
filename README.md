@@ -27,6 +27,12 @@ The following **bonus** features are implemented:
 Extra features I added:
 -[x] User handle, Timestamp Label
 
+To-do:
+- [ ] Retweet functionality
+- [ ] Followers/Following data
+- [ ] Favorite/Retweet numbers
+- [ ] Profile page
+
 ### App Walkthough GIF
 
 Here's a walkthrough of implemented user stories:

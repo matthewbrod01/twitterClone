@@ -18,7 +18,6 @@ class HomeTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("in tableVC")
         fetchTweets()
         setUpSideMenu()
         
@@ -102,29 +101,13 @@ class HomeTableViewController: UITableViewController {
         })
     }
     
+    /* Set up Side Menu */
     func setUpSideMenu() {
         SideMenuManager.default.menuPushStyle = .replace
         SideMenuManager.default.menuPresentMode = .menuSlideIn
         SideMenuManager.default.menuFadeStatusBar = false
         SideMenuManager.default.menuAlwaysAnimate = true
     }
-    
-    /*
-    /* Log out event handler */
-    @IBAction func onTapLogout(_ sender: Any) {
-        TwitterAPICaller.client?.logout()
-        UserDefaults.standard.set(false, forKey: "userLoggedIn")
-        self.dismiss(animated: true, completion: nil)
-    }
-    */
-    
-    /*
-     @IBAction func onTapLogout(_ sender: Any) {
-     TwitterAPICaller.client?.logout()
-     UserDefaults.standard.set(false, forKey: "userLoggedIn")
-     self.dismiss(animated: true, completion: nil)
-     }
- */
     
     /* Infinite scroll. When user is at bottom of tableView page, fetch more tweets */
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

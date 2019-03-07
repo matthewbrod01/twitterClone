@@ -14,14 +14,6 @@ class TweetViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        /*
-        // Mimic placeholder text
-        tweetTextView.delegate = self
-        tweetTextView.text = "What's happening?"
-        tweetTextView.textColor = UIColor.lightGray
-        */
-        
         // Show keyboard
         tweetTextView.becomeFirstResponder()
     }
@@ -55,23 +47,4 @@ class TweetViewController: UIViewController, UITextViewDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
-    /*
-    
-    /* Remove placeholder text when user types something */
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if tweetTextView.textColor == UIColor.lightGray {
-            tweetTextView.text = ""
-            tweetTextView.textColor = UIColor.black
-        }
-    }
-    
-    /* Set back placeholder text when user deletes characters */
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if tweetTextView.text == "" {
-            tweetTextView.text = "What's happening?"
-            tweetTextView.textColor = UIColor.lightGray
-        }
-    }
-    */
 }
