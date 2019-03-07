@@ -29,13 +29,14 @@ class LoginViewController: UIViewController {
         loginIcon.addGestureRecognizer(didTapIcon)
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         // If login data persists, show Home Screen immediately
         if UserDefaults.standard.bool(forKey: "userLoggedIn") == true {
             self.performSegue(withIdentifier: "loginToHome", sender: self)
         }
     }
-    
+ 
     
     @IBAction func onTapLogin(_ sender: Any) {
         loginToHomePage()
@@ -57,7 +58,16 @@ class LoginViewController: UIViewController {
             UserDefaults.standard.set(true, forKey: "userLoggedIn")
             self.performSegue(withIdentifier: "loginToHome", sender: self)
         }, failure: { (error) in
-            print(error.localizedDescription)
+            /*
+            let rateLimitUrlString = "https://api.twitter.com/1.1/application/rate_limit_status.json"
+            TwitterAPICaller.client?.getDictionaryRequest(url: rateLimitUrlString, parameters: ["resources": "help"], success: { (rateLimits: NSDictionary) in
+                print(rateLimits)
+            }, failure: { (error) in
+                print(error)
+            })
+            */
+            
+            print(error)
             // On failure: Present an error alert
             let title = "Error"
             let message = "An error has occured. Unable to log-in."
