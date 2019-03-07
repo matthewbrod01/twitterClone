@@ -24,6 +24,9 @@ The following **bonus** features are implemented:
 - [ ] User can view their profile in a profile tab. (3pts)
 - [ ] User sees embedded images in tweet if available. (3pts)
 
+Extra features I added:
+-[x] User handle, Timestamp Label
+
 ### App Walkthough GIF
 
 Here's a walkthrough of implemented user stories:

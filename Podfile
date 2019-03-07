@@ -9,4 +9,5 @@ target 'Twitter' do
   pod 'BDBOAuth1Manager'
   pod 'AlamofireImage'
   pod 'MBProgressHUD'
+  pod 'SideMenu'
 end

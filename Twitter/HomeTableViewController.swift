@@ -8,16 +8,19 @@
 
 import UIKit
 import MBProgressHUD
+import SideMenu
 
 class HomeTableViewController: UITableViewController {
-    
+
     var tweetArray = [NSDictionary]()
     var numberOfTweets: Int = 0
     let myRefreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("in tableVC")
         fetchTweets()
+        setUpSideMenu()
         
         // Target: This screen
         // Action: Call function fetchTweets()
@@ -99,12 +102,29 @@ class HomeTableViewController: UITableViewController {
         })
     }
     
+    func setUpSideMenu() {
+        SideMenuManager.default.menuPushStyle = .replace
+        SideMenuManager.default.menuPresentMode = .menuSlideIn
+        SideMenuManager.default.menuFadeStatusBar = false
+        SideMenuManager.default.menuAlwaysAnimate = true
+    }
+    
+    /*
     /* Log out event handler */
     @IBAction func onTapLogout(_ sender: Any) {
         TwitterAPICaller.client?.logout()
         UserDefaults.standard.set(false, forKey: "userLoggedIn")
         self.dismiss(animated: true, completion: nil)
     }
+    */
+    
+    /*
+     @IBAction func onTapLogout(_ sender: Any) {
+     TwitterAPICaller.client?.logout()
+     UserDefaults.standard.set(false, forKey: "userLoggedIn")
+     self.dismiss(animated: true, completion: nil)
+     }
+ */
     
     /* Infinite scroll. When user is at bottom of tableView page, fetch more tweets */
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -127,16 +147,19 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetCell
         
+        // set username and tweet content labels
         let user = tweetArray[indexPath.row]["user"] as! NSDictionary
         cell.usernameLabel.text = user["name"] as? String
         cell.tweetLabel.text = tweetArray[indexPath.row]["text"] as? String
         
+        // set user handle label
         let userHandle = user["screen_name"] as? String
         cell.userHandleLabel.text = "@\(userHandle!)"
 
+        // set timestamp
         let timestampOriginal = tweetArray[indexPath.row]["created_at"] as? String
         let timestampString = parseTimestampString(timestamp: timestampOriginal!)
-        cell.timestampLabel.text = "•\(timestampString)"
+        cell.timestampLabel.text = "\(timestampString)"
         
         // Set image in Xcode without 3rd party library
         let urlString = user["profile_image_url_https"] as? String
@@ -152,6 +175,7 @@ class HomeTableViewController: UITableViewController {
         return cell
     }
     
+    /* Function to parse timestamp from API to return a Date and Time */
     func parseTimestampString(timestamp: String) -> String {
         let formatter = DateFormatter()
         
@@ -163,7 +187,7 @@ class HomeTableViewController: UITableViewController {
         
         // Configure output format
         formatter.dateStyle = .short
-        formatter.timeStyle = .none
+        formatter.timeStyle = .short
         
         // Convert Date to String
         return formatter.string(from: date!)
