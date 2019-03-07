@@ -23,15 +23,18 @@ The following **bonus** features are implemented:
 
 Extra features I added:
 
-- [x] User handle, Timestamp Label
+- [x] Alert controllers for better user experience
+- [x] Programmatically styled various UI components
+- [x] Add user handle, timestamp Label to tweetCell to make it look more "complete".
 - [x] SideMenu for better user navigation (had a hard time configuring this)
 
 To-do/Work-in-progress:
 
-- [ ] Add Followers/Following data
+- [ ] When a user clicks on a retweet button, add an alert controller asking for confirmation
 - [ ] Add Favorite/Retweet numbers
+- [ ] Add Followers/Following data
 - [ ] Style Profile page
-- [ ] Style Side Menu
+- [ ] Style Side Menu/Clean up UI
 
 ### App Walkthough GIF
 
