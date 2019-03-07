@@ -13,7 +13,7 @@ The following **required** functionality is completed:
 
 - [x] User can compose a tweet. (4pts)
 - [x] User can favorite a tweet. (4pts)
-- [ ] User can retweet a tweet. (2pts)
+- [x] User can retweet a tweet. (2pts)
 
 The following **bonus** features are implemented:
 
@@ -22,19 +22,22 @@ The following **bonus** features are implemented:
 - [ ] User sees embedded images in tweet if available. (3pts)
 
 Extra features I added:
--[x] User handle, Timestamp Label
 
-To-do:
-- [ ] Retweet functionality
-- [ ] Followers/Following data
-- [ ] Favorite/Retweet numbers
-- [ ] Profile page
+- [x] User handle, Timestamp Label
+- [x] SideMenu for better user navigation (had a hard time configuring this)
+
+To-do/Work-in-progress:
+
+- [ ] Add Followers/Following data
+- [ ] Add Favorite/Retweet numbers
+- [ ] Style Profile page
+- [ ] Style Side Menu
 
 ### App Walkthough GIF
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of implemented user stories in Part 2:
 
-<img src="leetTweets.gif" width=250 title='Video Walkthrough' alt='Video Walkthrough' /><br />
+<img src="leetTweets3.gif" width=250 title='Video Walkthrough' alt='Video Walkthrough' /> <img src="leetTweets4.gif" width=250 title='Video Walkthrough' alt='Video Walkthrough' /><br />
 
 ## Twitter - Part 1
 
