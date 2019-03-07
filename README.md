@@ -3,7 +3,8 @@
 **LeetTweets** is an iOS twitter client to read your tweets.
 
 Time spent: **3** hours spent in total (Part 1)
-Time spent: **7** hours spent in total (Part 2)
+
+Time spent: **8** hours spent in total (Part 2)
 
 ## Twitter - Part II
 
