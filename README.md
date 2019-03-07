@@ -2,13 +2,10 @@
 
 **LeetTweets** is an iOS twitter client to read your tweets.
 
-Time spent: **3** hours spent in total
+Time spent: **3** hours spent in total (Part 1)
+Time spent: **7** hours spent in total (Part 2)
 
 ## Twitter - Part II
-
-This is a basic twitter clone app to view, compose, favorite, and retweet tweets.
-
-Time spent: **3** hours spent in total
 
 ### User Stories
 
