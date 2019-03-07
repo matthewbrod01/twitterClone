@@ -27,6 +27,7 @@ Extra features I added:
 - [x] Alert controllers for better user experience
 - [x] Programmatically styled various UI components
 - [x] Add user handle, timestamp Label to tweetCell to make it look more "complete".
+- [x] Tinkered with ContainerView, so that I could add a "Sticky" UIButton on top of a TableViewController. (big hurdle)
 - [x] SideMenu for better user navigation (had a hard time configuring this)
 
 To-do/Work-in-progress:
